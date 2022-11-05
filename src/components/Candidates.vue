@@ -53,6 +53,7 @@ onBeforeUnmount(() => {
           <th scope="col">Symbol</th>
           <th scope="col">Political Party</th>
           <th scope="col">District</th>
+          <th scope="col">Centre No.</th>
           <th scope="col">State</th>
           <th scope="col">Votes Received</th>
         </tr>
@@ -65,6 +66,7 @@ onBeforeUnmount(() => {
           <td>{{ candidate.SymbolName }}</td>
           <td>{{ candidate.PoliticalPartyName }}</td>
           <td>{{ candidate.DistrictName }}</td>
+          <td>{{ candidate.SCConstID }}</td>
           <td>{{ candidate.StateName }}</td>
           <td>{{ candidate.TotalVoteReceived }}</td>
         </tr>

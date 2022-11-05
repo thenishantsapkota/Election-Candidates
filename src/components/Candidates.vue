@@ -20,7 +20,7 @@ export default {
   mounted: function () {
     this.timer = setInterval(async () => {
       await this.apiRequest();
-    }, 10000);
+    }, 100000);
   },
   components: {
     NepaliInput,

@@ -9,7 +9,7 @@ export default {
     };
   },
   created: function () {
-    axios.get("http://192.168.1.71:3000/api").then((res) => {
+    axios.get("https://server-three-xi.vercel.app/api").then((res) => {
       this.candidates = res.data;
     });
   },

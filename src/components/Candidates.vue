@@ -6,18 +6,24 @@ export default {
   data() {
     return {
       candidates: null,
+      isLoading: true,
     };
   },
-  created: function () {
-    axios.get("https://server-three-xi.vercel.app/api").then((res) => {
+  async created() {
+    await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
       this.candidates = res.data;
+      this.isLoading = false;
     });
   },
 };
 </script>
 
 <template>
-  <div class="container">
+  <div class="preloader" v-if="isLoading">
+    <img src="../assets/loader.svg" alt="">
+  </div>
+
+  <div class="container" v-if="!isLoading">
     <h3>Election Candidates:</h3>
     <!-- <input
       type="text"

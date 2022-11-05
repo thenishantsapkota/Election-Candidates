@@ -1,0 +1,128 @@
+#searchbar {
+  /* background-image: url("/css/searchicon.png"); Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  /* max-width: 100%; */
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+table * {
+  position: relative;
+}
+table td,
+table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #ffed86;
+  font-size: 16px;
+}
+table tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e3f1d5;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td,
+table th {
+  text-align: left;
+}
+table td.l,
+table th.l {
+  text-align: right;
+}
+table td.c,
+table th.c {
+  text-align: center;
+}
+table td.r,
+table th.r {
+  text-align: center;
+}
+
+@media screen and (max-width: 35.5em) {
+  table {
+    display: block;
+  }
+  table > *,
+  table tr,
+  table td,
+  table th {
+    display: block;
+  }
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    height: auto;
+    padding: 8px 0;
+  }
+  table tbody tr td {
+    padding-left: 45%;
+    margin-bottom: 12px;
+  }
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  table tbody tr td:before {
+    position: absolute;
+    font-weight: 700;
+    width: 40%;
+    left: 10px;
+    top: 0;
+  }
+  table tbody tr td:nth-child(1):before {
+    content: "Candidate Name";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "Age";
+  }
+  table tbody tr td:nth-child(3):before {
+    content: "Gender";
+  }
+  table tbody tr td:nth-child(4):before {
+    content: "Symbol";
+  }
+  table tbody tr td:nth-child(5):before {
+    content: "Party";
+  }
+  table tbody tr td:nth-child(6):before {
+    content: "District";
+  }
+  table tbody tr td:nth-child(7):before {
+    content: "State";
+  }
+  table tbody tr td:nth-child(8):before {
+    content: "Total Votes";
+  }
+}
+body {
+  background: lightblue;
+  font: 400 14px "Calibri", "Arial";
+  padding: 20px;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #f2f2f2;
+}

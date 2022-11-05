@@ -9,7 +9,7 @@ export default {
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/api").then((res) => {
+    axios.get("http://192.168.1.71:3000/api").then((res) => {
       this.candidates = res.data;
     });
   },
@@ -18,7 +18,7 @@ export default {
 
 <template>
   <div class="container">
-    <h3 >Election Candidates:</h3>
+    <h3>Election Candidates:</h3>
     <!-- <input
       type="text"
       id="searchbar"

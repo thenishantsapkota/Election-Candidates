@@ -2,7 +2,16 @@
 import axios from "axios";
 import { reactive, onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import NepaliInput from "./NepaliInput.vue";
-
+const props = defineProps({
+  apiUrl: {
+    type: String,
+    required: true
+  },
+  electionType:{
+    type: String,
+    required: true
+  }
+})
 const state = reactive({
   candidates: null,
   isLoading: true,
@@ -10,13 +19,13 @@ const state = reactive({
 });
 
 async function apiRequest() {
-  await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
+  await axios.get(props.apiUrl).then((res) => {
     state.candidates = res.data;
   });
 }
 
 onBeforeMount(async () => {
-  await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
+  await axios.get(props.apiUrl).then((res) => {
     state.candidates = res.data;
     state.isLoading = false;
   });
@@ -38,7 +47,8 @@ onBeforeUnmount(() => {
     <img src="../assets/loader.svg" alt="" />
   </div>
   <div class="container" v-if="!state.isLoading">
-    <h3>Election Candidates:</h3>
+    <h3>{{props.electionType}} Election Candidates:</h3>
+    <p><a href="/">National</a> | <a href="/province">Province</a></p>
     <p>
       Developed with ❤️ by <a href="https://snishant.com.np">Nishant Sapkota</a>
     </p>

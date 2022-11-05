@@ -1,21 +1,9 @@
 <template>
   <div id="app">
-    <Candidates />
+   <router-view />
   </div>
 </template>
 
-<script>
-import { defineAsyncComponent } from "vue";
-
-export default {
-  name: "app",
-  components: {
-    Candidates: defineAsyncComponent(() =>
-      import("./components/Candidates.vue")
-    ),
-  },
-};
-</script>
 
 <style>
 #app {

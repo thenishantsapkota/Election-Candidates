@@ -1,48 +1,43 @@
-<script>
+<script setup>
 import axios from "axios";
+import { reactive, onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import NepaliInput from "./NepaliInput.vue";
 
-export default {
-  name: "Candidates",
-  data() {
-    return {
-      candidates: null,
-      isLoading: true,
-      timer: null,
-    };
-  },
-  async created() {
-    await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
-      this.candidates = res.data;
-      this.isLoading = false;
-    });
-  },
-  mounted: function () {
-    this.timer = setInterval(async () => {
-      await this.apiRequest();
-    }, 100000);
-  },
-  components: {
-    NepaliInput,
-  },
-  methods: {
-    async apiRequest() {
-      await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
-        this.candidates = res.data;
-      });
-    },
-  },
-  beforeUnmount() {
-    clearInterval(this.timer);
-  },
-};
+const state = reactive({
+  candidates: null,
+  isLoading: true,
+  timer: null,
+});
+
+async function apiRequest() {
+  await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
+    state.candidates = res.data;
+  });
+}
+
+onBeforeMount(async () => {
+  await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
+    state.candidates = res.data;
+    state.isLoading = false;
+  });
+});
+
+onMounted(() => {
+  state.timer = setInterval(async () => {
+    await apiRequest();
+  }, 100000);
+});
+
+onBeforeUnmount(() => {
+  clearInterval(state.timer);
+});
 </script>
 
 <template>
-  <div class="preloader" v-if="isLoading">
+  <div class="preloader" v-if="state.isLoading">
     <img src="../assets/loader.svg" alt="" />
   </div>
-  <div class="container" v-if="!isLoading">
+  <div class="container" v-if="!state.isLoading">
     <h3>Election Candidates:</h3>
     <p>
       Developed with ❤️ by <a href="https://snishant.com.np">Nishant Sapkota</a>
@@ -63,7 +58,7 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="candidate in candidates">
+        <tr v-for="candidate in state.candidates">
           <td>{{ candidate.CandidateName }}</td>
           <td>{{ candidate.Age }}</td>
           <td>{{ candidate.Gender }}</td>

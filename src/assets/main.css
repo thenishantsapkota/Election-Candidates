@@ -141,6 +141,22 @@ tr:hover {
   margin-bottom: 12px; /* Add some space below the input */
 }
 
+.mySelect {
+  padding: 12px 5px 12px 40px;
+}
+
+.wrap span {
+  display: block;
+  padding-right: 5px;
+  overflow: hidden;
+}
+.wrap input[type=text] {
+  width: 100%
+}
+.wrap select {
+  float: right
+}
+
 .GithubCorner {
   display: inline-block;
   position: fixed;

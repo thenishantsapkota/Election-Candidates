@@ -2,6 +2,7 @@
 import axios from "axios";
 import { reactive, onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import NepaliInput from "./NepaliInput.vue";
+
 const props = defineProps({
   apiUrl: {
     type: String,
@@ -53,7 +54,6 @@ onBeforeUnmount(() => {
       Developed with ❤️ by <a href="https://snishant.com.np">Nishant Sapkota</a>
     </p>
     <NepaliInput />
-
     <table id="myTable">
       <thead>
         <tr class="header">

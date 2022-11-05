@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import NepaliInput from "./NepaliInput.vue";
 
 export default {
   name: "Candidates",
@@ -15,22 +16,20 @@ export default {
       this.isLoading = false;
     });
   },
+  components: {
+    NepaliInput,
+  },
 };
 </script>
 
 <template>
   <div class="preloader" v-if="isLoading">
-    <img src="../assets/loader.svg" alt="">
+    <img src="../assets/loader.svg" alt="" />
   </div>
-
   <div class="container" v-if="!isLoading">
     <h3>Election Candidates:</h3>
-    <!-- <input
-      type="text"
-      id="searchbar"
-      onkeyup="search_animal()"
-      placeholder="Search for names.."
-    /> -->
+    <NepaliInput />
+
     <table id="myTable">
       <thead>
         <tr class="header">
@@ -62,6 +61,6 @@ export default {
 
 <style>
 h3 {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 </style>

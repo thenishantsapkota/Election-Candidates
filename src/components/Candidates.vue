@@ -8,6 +8,7 @@ export default {
     return {
       candidates: null,
       isLoading: true,
+      timer: null,
     };
   },
   async created() {
@@ -16,8 +17,23 @@ export default {
       this.isLoading = false;
     });
   },
+  mounted: function () {
+    this.timer = setInterval(async () => {
+      await this.apiRequest();
+    }, 10000);
+  },
   components: {
     NepaliInput,
+  },
+  methods: {
+    async apiRequest() {
+      await axios.get("https://server-three-xi.vercel.app/api").then((res) => {
+        this.candidates = res.data;
+      });
+    },
+  },
+  beforeUnmount() {
+    clearInterval(this.timer);
   },
 };
 </script>
@@ -28,6 +44,9 @@ export default {
   </div>
   <div class="container" v-if="!isLoading">
     <h3>Election Candidates:</h3>
+    <p>
+      Developed with ❤️ by <a href="https://snishant.com.np">Nishant Sapkota</a>
+    </p>
     <NepaliInput />
 
     <table id="myTable">

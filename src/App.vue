@@ -5,12 +5,14 @@
 </template>
 
 <script>
-import Candidates from "./components/Candidates.vue";
+import { defineAsyncComponent } from "vue";
 
 export default {
   name: "app",
   components: {
-    Candidates,
+    Candidates: defineAsyncComponent(() =>
+      import("./components/Candidates.vue")
+    ),
   },
 };
 </script>
